@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/A51-QA-Automation-Framework.iml" filepath="$PROJECT_DIR$/A51-QA-Automation-Framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/A51-QA-Automation-Framework.main.iml" filepath="$PROJECT_DIR$/.idea/modules/A51-QA-Automation-Framework.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/A51-QA-Automation-Framework.test.iml" filepath="$PROJECT_DIR$/.idea/modules/A51-QA-Automation-Framework.test.iml" />
+    </modules>
+  </component>
+</project>
