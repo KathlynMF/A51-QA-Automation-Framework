@@ -1,0 +1,59 @@
+import org.open.selenium.WebDriver;
+import org.open.selenium.WebElement;
+import org.open.selenium.By;
+import org.open.selenium.chrome.ChromeDriver;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class Homework17 {
+
+    WebDriver driver = new ChromeDriver();
+    String baseUrl = "https://qa.koel.app/";
+    String username = "your_username";
+    String password = "your_password";
+
+    @Test
+    public void addSongToPlaylist() {
+        // Step 4: Navigate to "https://qa.koel.app/"
+        driver.get(baseUrl);
+
+        // Step 5: Log in with your credentials
+        WebElement usernameInput = driver.findElement(By.id("login-username"));
+        WebElement passwordInput = driver.findElement(By.id("login-password"));
+        WebElement loginButton = driver.findElement(By.id("login-submit"));
+
+        usernameInput.sendKeys(username);
+        passwordInput.sendKeys(password);
+        loginButton.click();
+
+        // Step 6: Search for a song
+        WebElement searchInput = driver.findElement(By.id("search"));
+        searchInput.sendKeys("Your Song Title");
+
+        // Step 7: Click 'View All' button
+        WebElement viewAllButton = driver.findElement(By.id("search-view-all"));
+        viewAllButton.click();
+
+        // Step 8: Click the first song in the search results
+        WebElement firstSong = driver.findElement(By.xpath("//div[@class='song-list-item'][1]"));
+        firstSong.click();
+
+        // Step 9: Click 'ADD TO...' button
+        WebElement addToPlaylistButton = driver.findElement(By.id("add-to-playlist-button"));
+        addToPlaylistButton.click();
+
+        // Step 10: Choose the playlist to add the song to
+        WebElement playlistInput = driver.findElement(By.id("playlist-input"));
+        playlistInput.sendKeys("New Playlist");
+        WebElement createPlaylistButton = driver.findElement(By.id("create-playlist-button"));
+        createPlaylistButton.click();
+
+        // Step 11: Verify notification message
+        WebElement notification = driver.findElement(By.id("notification-message"));
+        String actualNotificationText = notification.getText();
+        String expectedNotificationText = "Added 1 song into New Playlist";
+        assertEquals(expectedNotificationText, actualNotificationText);
+
+        // Close the browser window
+        driver.quit();
+    }
+}
