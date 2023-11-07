@@ -22,4 +22,31 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
     }
+
+    @BeforeMethod
+    @Parameters({"BaseURL"})
+    public void launchBrowser(String BaseURL){
+        ChromeOptions options = new ChromOptions();
+        options.addarguments("--remote-allow-origins=*");
+
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        url = BaseURL;
+        navigateToPage();
+    }
+
+
+    String newPlaylistName = "Sample Edited Playlist";
+
+    @Test
+
+    public void renamePlaylist() {
+        provideEmail("demo@class.com");
+        providePassword("te$t$tudent");
+        clickSubmit();
+        doubleClickPlaylist();
+        enterNewPlaylistName();
+        Assert. assert.Equals(getRenamePlaylistSucccessMsg(), updatedPlaylistMsg);
+    }
+
 }
